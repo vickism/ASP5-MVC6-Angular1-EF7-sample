@@ -1,0 +1,43 @@
+﻿@model ASP5.ViewModels.ContactViewModal
+@{
+	ViewBag.Title = "Contact";
+	Layout = "_Layout";
+}
+<div class="row">
+	<h2>Contact</h2>
+
+	@using (Html.BeginForm(FormMethod.Post, new { @class = "form" }))
+	{
+		@if (ViewBag.Message != null)
+		{
+			<div>@ViewBag.Message</div>
+		}
+
+		<div asp-validation-summary="ValidationSummary.ModelOnly"></div>
+		@Html.ValidationSummary(true)
+
+		<div class="form-group">
+			@Html.LabelFor(o => o.Name, "Name")
+			@Html.TextBoxFor(o => o.Name,new {@class="form-control"})
+			@Html.ValidationMessage("Name",new {@class="text-muted"})
+		</div>
+		<div class="form-group">
+			<label asp-for="Email">Email : </label>
+			<input type="email" asp-for="Email" class="form-control" />
+			<span asp-validation-for="Email" class="text-muted"></span>
+		</div>
+		<div class="form-group">
+		<label asp-for="Message">Message : </label>
+		<textarea cols="40" rows="4" asp-for="Message" class="form-control"></textarea>
+			<span asp-validation-for="Message" class="text-muted"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-success" value="Send Message" />
+			</div>
+			}
+</div>
+@section Scripts
+{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

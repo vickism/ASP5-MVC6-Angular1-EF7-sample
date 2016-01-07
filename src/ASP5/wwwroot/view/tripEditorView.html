@@ -1,0 +1,29 @@
+﻿<div >
+	<div > <a class="btn btn-sm btn-default" href="#/">
+		<i class="fa fa-angle-left"> Back</i>
+	</a></div>
+	<div class="col-md-3">
+		<h2>{{vm.tripName}}</h2>
+		<wait-cursor display-when="vm.isBusy"></wait-cursor>
+		<div class="alter alert-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+		<table class="table table-responsive table-striped">
+			<tr>
+				<th>Location</th>
+				<th>Arrival</th>
+			</tr>
+			<tr ng-repeat="stop in vm.stops">
+				<td>{{stop.name}}</td>
+				<td>{{stop.arrival | date}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-9">
+		<h2>MAP</h2>
+		<div id="map">
+			
+		</div>
+	</div>
+	<div>&copy; The World</div>
+</div>
